@@ -1,9 +1,19 @@
+import mongoose from "mongoose";
 
-import mongoose from 'mongoose';
-
-mongoose.Promise = global.Promise;
-const db = [];
-db.mongoose = mongoose;
-db.url = dbConfig.url;
-db.users = require("./user.model.js")(mongoose);
-module.exports = db;
+const User = new mongoose.Schema({
+    username:{
+        type: String,
+        required: true,
+        trim:true
+    },
+    email:{
+        type: String,
+        required: true,
+        trim:true
+    },
+    password:{
+        type: String,
+        required:true,
+    }
+});
+export default mongoose.model("User",User);
